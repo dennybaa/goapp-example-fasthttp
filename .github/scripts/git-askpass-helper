@@ -1,0 +1,8 @@
+#!/bin/sh
+## detect github secret (available with BuildKit)
+if [ -f /run/secrets/github_token ]; then
+  mkdir -p /.git-askpass
+  echo -e '#!/bin/sh\ncat /run/secrets/github_token' > /.git-askpass/helper && chmod +x /.git-askpass/helper
+  git config --global credential.https://github.com.username token
+  export GIT_ASKPASS=/.git-askpass/helper
+fi

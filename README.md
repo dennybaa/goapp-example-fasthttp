@@ -49,7 +49,7 @@ curl -v -XPOST "http://localhost:8080/user?name=John Doe"
 
 ### Goals
 
-Apart from the defined requirements this demo has an enducational focus. After implementing this code I got practiced with several popular goglang projects:
+Apart from the defined requirements this demo has an educational focus. After implementing this code I got practiced with several popular goglang projects:
 
 * [fasthttp](https://github.com/valyala/fasthttp) server
 * [viper](https://github.com/spf13/viper) environment parser
@@ -63,7 +63,8 @@ Apart from the defined requirements this demo has an enducational focus. After i
     
     1.2. **logfile mode (BACKEND=logfile)**
 
-    Evidently GET /user has not been reuested thus returns `Not Found`.
+    Evidently GET /user has not been requested thus the endpoint returns `Not Found`.
+    Secondly desire for a custom log event formatting, didn't allow to use an efficient zap logger that is why a simple buffered log filewriter has been implemented for this specific requirements.
     
     1.3. **sqlite mode (BACKEND=sqlite)**
     

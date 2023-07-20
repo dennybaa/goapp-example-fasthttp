@@ -1,0 +1,35 @@
+name: Docker Image
+on:
+  release:
+    types: [published]     
+
+env:
+  ## group2 is a 1.2.3 version
+  VERSION_REGEX: ^(refs\/tags\/)?v?(([0-9]+.?){0,3}(-r[0-9]+)?)$
+
+jobs:
+  setup:
+    name: Setup
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.parse.outputs.version }}
+    steps:
+      -
+        name: Parse version from tag
+        id: parse
+        uses: dysnix/ws-action-parse-semver@upgrade
+        with:
+          string: ${{ github.ref }}
+          extractor_regex: ${{ env.VERSION_REGEX }}
+          extractor_group: 2
+
+  build:
+    name: Docker Image
+    uses: dysnix/github-workflows/.github/workflows/docker.build-and-push.yaml@main
+    needs: [setup]
+    with:
+      username: dennybaa
+      build-args: |
+        VERSION=v${{ needs.setup.outputs.version }}
+    secrets:
+      password: "${{ secrets.DOCKERHUB_TOKEN }}"
