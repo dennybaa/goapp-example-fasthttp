@@ -10,6 +10,5 @@ RUN --mount=type=ssh --mount=type=secret,id=github_token \
     CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags="-w -s" .
 
 FROM alpine
-EXPOSE 8080
 COPY --from=builder /app/app /usr/local/bin/
 CMD ["/usr/local/bin/app"]
