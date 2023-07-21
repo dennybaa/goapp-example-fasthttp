@@ -6,8 +6,8 @@ COPY . /app
 COPY .github/scripts/git-askpass-helper /
 
 RUN --mount=type=ssh --mount=type=secret,id=github_token \
-    apk --no-cache add git && . /git-askpass-helper && \
-    CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags="-w -s" .
+    apk --no-cache add git alpine-sdk gcc && . /git-askpass-helper && \
+    CGO_ENABLED=1 GOOS=linux GOARCH=amd64 go build -ldflags="-w -s" .
 
 FROM alpine
 COPY --from=builder /app/app /usr/local/bin/
