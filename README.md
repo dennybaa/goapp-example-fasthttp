@@ -37,6 +37,18 @@ echo -e "\n============================="
 curl -v -XPOST "http://localhost:8080/user?name=John Doe"
 ```
 
+### ;TL;DR; Kubernetes
+
+```bash
+git clone github/dennybaa/goapp-example-fasthttp
+cd goapp-example-fasthttp
+
+helm install app chart/
+
+pod=$(kubectl get pods -l app.kubernetes.io/name=demo -o jsonpath='{.items[].metadata.name}')
+kubectl exec -t $pod -- wget -qO - http://app-demo:8080/hello
+```
+
 ### Environment
 
 | Variable | Description | Default |
@@ -78,3 +90,8 @@ Apart from the defined requirements this demo has an educational focus. After im
     Serves request counter and complementary request durarion:
     * http_requests_total (count)
     * http_requests_duration (histogram)
+
+2. Helm chart
+
+    It's based on dysnix/app to leverage all the primitives without duplicating the world.
+    Note that the library mode hasn't been widely used as the direct mode of dysnix/app chart.
