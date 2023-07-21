@@ -295,6 +295,8 @@ livenessProbe:
 ## @extra readinessProbe.exec Specifies exec action (one of the actions must be set before enabling)
 ## @extra readinessProbe.grpc Specifies GRPC action (one of the actions must be set before enabling)
 ## @extra readinessProbe.httpGet Specifies HTTPGet action (one of the actions must be set before enabling)
+## @param readinessProbe.httpGet.path Specifies path of readiness endpoint
+## @param readinessProbe.httpGet.port Specifies the container port
 ## @extra readinessProbe.tcpSocket Specifies TCPSocket action (one of the actions must be set before enabling)
 ##
 readinessProbe:

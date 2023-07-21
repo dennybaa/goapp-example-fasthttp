@@ -7,6 +7,7 @@ This chart deploys a basic demo go application [docker/dennybaa/goapp-example-fa
 ```console
 git clone https://github.com/dennybaa/goapp-example-fasthttp
 cd goapp-example-fasthttp
+
 helm install app chart/
 
 pod=$(kubectl get pods -l app.kubernetes.io/name=demo -o jsonpath='{.items[].metadata.name}')
@@ -93,7 +94,7 @@ kubectl exec -t $pod -- wget -qO - http://app-demo:8080/hello
 | `livenessProbe.grpc`                              | Specifies GRPC action (must set before enabling)                                                                                                                  |                                   |
 | `livenessProbe.httpGet`                           | Specifies HTTPGet action (must set before enabling)                                                                                                               |                                   |
 | `livenessProbe.tcpSocket`                         | Specifies TCPSocket action (must set before enabling)                                                                                                             |                                   |
-| `readinessProbe.enabled`                          | Enable readinessProbe on containers                                                                                                                               | `false`                           |
+| `readinessProbe.enabled`                          | Enable readinessProbe on containers                                                                                                                               | `true`                            |
 | `readinessProbe.initialDelaySeconds`              | Initial delay seconds for readinessProbe                                                                                                                          | `0`                               |
 | `readinessProbe.periodSeconds`                    | Period seconds for readinessProbe                                                                                                                                 | `10`                              |
 | `readinessProbe.timeoutSeconds`                   | Timeout seconds for readinessProbe                                                                                                                                | `1`                               |
@@ -102,6 +103,8 @@ kubectl exec -t $pod -- wget -qO - http://app-demo:8080/hello
 | `readinessProbe.exec`                             | Specifies exec action (one of the actions must be set before enabling)                                                                                            |                                   |
 | `readinessProbe.grpc`                             | Specifies GRPC action (one of the actions must be set before enabling)                                                                                            |                                   |
 | `readinessProbe.httpGet`                          | Specifies HTTPGet action (one of the actions must be set before enabling)                                                                                         |                                   |
+| `readinessProbe.httpGet.path`                     | Specifies path of readiness endpoint                                                                                                                              | `/hello`                          |
+| `readinessProbe.httpGet.port`                     | Specifies the container port                                                                                                                                      | `http`                            |
 | `readinessProbe.tcpSocket`                        | Specifies TCPSocket action (one of the actions must be set before enabling)                                                                                       |                                   |
 | `startupProbe.enabled`                            | Enable startupProbe on containers                                                                                                                                 | `false`                           |
 | `startupProbe.initialDelaySeconds`                | Initial delay seconds for startupProbe                                                                                                                            | `0`                               |
