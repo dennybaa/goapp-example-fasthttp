@@ -24,3 +24,4 @@ go.work
 app
 app.log
 data.db
+chart/charts/

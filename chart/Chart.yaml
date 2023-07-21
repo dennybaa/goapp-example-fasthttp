@@ -1,0 +1,29 @@
+apiVersion: v2
+name: demo
+description: Generic application Helm chart
+home: https://github.com/dennybaa/goapp-example-fasthttp
+version: 0.1.0
+sources:
+  - https://github.com/dennybaa/goapp-example-fasthttp/chart
+keywords:
+  - common
+  - helper
+  - template
+  - function
+  - library
+  - bitnami
+  - dysnix
+maintainers:
+  - email: dennybaa@gmail.com
+    name: dennybaa  # Denis Baryshev
+dependencies:
+  - name: common
+    repository: https://charts.bitnami.com/bitnami
+    tags:
+      - bitnami-common
+    version: 2.2.2
+  - name: app
+    version: 0.99.x
+    repository: https://dysnix.github.io/charts
+    tags:
+      - dysnix-app

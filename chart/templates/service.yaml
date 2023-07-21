@@ -1,0 +1,5 @@
+{{/* vim: set filetype=helm: */}}
+{{/*
+  This is the way how the library template is attached and rendered.
+*/}}
+{{- include "app.template" . -}}

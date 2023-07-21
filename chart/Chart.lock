@@ -1,0 +1,9 @@
+dependencies:
+- name: common
+  repository: https://charts.bitnami.com/bitnami
+  version: 2.2.2
+- name: app
+  repository: https://dysnix.github.io/charts
+  version: 0.99.16
+digest: sha256:1c4aeea977190bd79976cc02e8d3034dde42b71a8f5a5d723267e3a617976b74
+generated: "2023-07-21T12:59:00.883853736+07:00"
